@@ -45,7 +45,14 @@ zstyle ':vcs_info:git:*' formats ' (%F{yellow}%b%F{white})'
 PROMPT='%F{046}%n@%m:%F{yellow}%~ %F{blue}$%F{white} '
 RPROMPT='${vcs_info_msg_0_} %t %D [%?]'
 
+export TERM=xterm-256color
+
+
 # Open command
 alias open='xdg-open'
 alias ls='ls --color'
 alias clipboard='xclip -sel clip'
+alias rm='trash-put'
+
+export EDITOR='vim'
+
