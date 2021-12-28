@@ -41,9 +41,25 @@ precmd(){ vcs_info }
 setopt PROMPT_SUBST
 zstyle ':vcs_info:git:*' formats ' (%F{yellow}%b%F{white})'
 
+function preexec() {
+    timer=${timer:-$SECONDS}
+}
+
+function precmd() {
+    if [ $timer ]; then
+        timer_show=$(($SECONDS - $timer))
+        timer_show=$(printf '%.*f\n' 3 $timer_show)
+  	export RPROMPT="${vcs_info_msg_0_} %t [took ${timer_show}] [%?]"
+      
+        unset timer
+    fi
+}
+
+
+NEWLINE=$'\n'
 # Prompt Configuration
-PROMPT='%F{046}%n@%m:%F{yellow}%~ %F{blue}$%F{white} '
-RPROMPT='${vcs_info_msg_0_} %t %D [%?]'
+PROMPT="%F{046}%n@%m:%F{yellow}%~ %F{blue}${NEWLINE}$%F{white} "
+# RPROMPT='${vcs_info_msg_0_} %t %D [%?]'
 
 export TERM=xterm-256color
 
@@ -53,6 +69,8 @@ alias open='xdg-open'
 alias ls='ls --color'
 alias clipboard='xclip -sel clip'
 alias rm='trash-put'
-
+alias hacker='docker run --rm -v $(pwd):/root -w /root -it hacker'
+alias p='python'
 export EDITOR='vim'
+export GOPATH="$HOME/.config/go"
 
