@@ -74,3 +74,4 @@ alias p='python'
 export EDITOR='vim'
 export GOPATH="$HOME/.config/go"
 
+source /usr/share/nvm/init-nvm.sh
