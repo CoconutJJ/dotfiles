@@ -41,25 +41,10 @@ precmd(){ vcs_info }
 setopt PROMPT_SUBST
 zstyle ':vcs_info:git:*' formats ' (%F{yellow}%b%F{white})'
 
-function preexec() {
-    timer=${timer:-$SECONDS}
-}
-
-function precmd() {
-    if [ $timer ]; then
-        timer_show=$(($SECONDS - $timer))
-        timer_show=$(printf '%.*f\n' 3 $timer_show)
-  	export RPROMPT="${vcs_info_msg_0_} %t [took ${timer_show}] [%?]"
-      
-        unset timer
-    fi
-}
-
-
 NEWLINE=$'\n'
 # Prompt Configuration
 PROMPT="%F{046}%n@%m:%F{yellow}%~ %F{blue}${NEWLINE}$%F{white} "
-# RPROMPT='${vcs_info_msg_0_} %t %D [%?]'
+RPROMPT='${vcs_info_msg_0_} %t %D [%?]'
 
 export TERM=xterm-256color
 
