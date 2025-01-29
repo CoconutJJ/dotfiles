@@ -1,0 +1,22 @@
+theme = "edge_neon"
+[editor]
+rulers = [80, 120]
+bufferline="always"
+
+[keys.normal]
+"C-/" = "toggle_comments"
+
+[keys.insert]
+"C-/" = "toggle_comments"
+
+[keys.select]
+"C-/" = "toggle_comments"
+
+[editor.statusline]
+right = ["diagnostics", "selections", "register", "position", "file-encoding", "file-line-ending"]
+
+[editor.lsp]
+display-messages = true
+
+[editor.indent-guides]
+render = true

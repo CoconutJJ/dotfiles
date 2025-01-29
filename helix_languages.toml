@@ -1,0 +1,51 @@
+[language-server.pyright-lsp]
+command = "pyright-langserver"
+args = ["--stdio"]
+config= {"autoSearchPaths" = true, "diagnosticMode" = "workspace"}
+
+
+
+[[language]]
+name = "python"
+file-types = ["py", "pyi"]
+roots = ["pyproject.toml"]
+language-servers = ["pyright-lsp"]
+formatter = { command = "black", args = ["-", "-q"] }
+auto-format = true
+
+[[language]]
+name = "c"
+indent = { tab-width=8, unit="        "}
+auto-format = true
+
+[language.debugger]
+name="lldb-vscode"
+transport="stdio"
+command="lldb-vscode"
+
+[[language.debugger.templates]]
+name = "binary"
+request = "launch"
+completion = [ { name = "binary", completion = "filename" } ]
+args = { program = "{0}", initCommands = [] }
+
+
+[language-server.texlab]
+build = { onSave = true }
+
+[[language]]
+name = "latex"
+scope = "source.tex"
+injection-regex = "tex"
+file-types = ["tex"]
+formatter = { command = 'latexindent', args = ["-m"]}
+auto-format = true
+roots = []
+comment-token = "%"
+language-servers = ["texlab"]
+indent = { tab-width = 4, unit = "\t" }
+
+[[language]]
+name = "bash"
+scope = "source.sh"
+formatter = { command = 'shfmt', args = ["-i", "4"] }
