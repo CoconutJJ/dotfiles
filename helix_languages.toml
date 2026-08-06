@@ -3,8 +3,6 @@ command = "pyright-langserver"
 args = ["--stdio"]
 config= {"autoSearchPaths" = true, "diagnosticMode" = "workspace"}
 
-
-
 [[language]]
 name = "python"
 file-types = ["py", "pyi"]
@@ -28,7 +26,6 @@ name = "binary"
 request = "launch"
 completion = [ { name = "binary", completion = "filename" } ]
 args = { program = "{0}", initCommands = [] }
-
 
 [language-server.texlab]
 build = { onSave = true }
